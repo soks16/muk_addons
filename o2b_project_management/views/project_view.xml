@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Task -->
+        <record id="view_task_form2_inherit" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+            	<h1 class="o_row" position="replace">
+                    <h1 class="o_row">
+                    	<field name="task_seq" readonly="1"/>
+                    	<br/>
+                        <field name="priority" widget="priority"/>
+                        <field name="name" placeholder="Task Title..."/>
+                    </h1>
+                </h1>
+            </field>
+         </record>
+
+
+        <!-- Task -->
+        <record id="view_task_kanban_inherit" model="ir.ui.view">
+            <field name="name">project.task.kanban</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//templates/t/div/div/div/div/strong[@class='o_kanban_record_title']" position="replace">
+            		<strong class="o_kanban_record_title" style="color:blue;"><field name="task_seq"/></strong><br/>
+                    <strong class="o_kanban_record_title"><field name="name"/></strong><br/>
+                </xpath>
+            </field>
+         </record>
+
+
+</odoo>

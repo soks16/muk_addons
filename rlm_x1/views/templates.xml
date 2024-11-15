@@ -1,0 +1,260 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data>
+		<template id="assets_frontend" name="rlm_x1 assets" inherit_id="web.assets_frontend">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet" href="/rlm_x1/static/src/less/rlm_x1.less"/>
+				<link rel="stylesheet" href="/rlm_x1/static/src/less/custom1.less"/>
+			</xpath>
+		</template>
+		<template id="assets_backended" name="rlm_x1 backassets" inherit_id="web.assets_common">
+			<xpath expr="." position="inside">
+				<script type="text/javascript" src="/rlm_x1/static/src/js/custom1.js"/>
+			</xpath>
+		</template>
+		<template inherit_id="portal.frontend_layout" name="rlm_x1 Custom Menu Left" id="rlm_x1_custom_menu_left">
+			<xpath expr="//main" position="replace">
+				 <main>
+					<div class="row">
+						<t t-set="current_page" t-value="0"/>
+						<t t-foreach="website.menu_id.child_id" t-as="cp">
+							<t t-if="cp.clean_url() == request.httprequest.path">
+								<t t-set="current_page" t-value="cp.name"/>
+							</t>
+						</t>
+						<t t-if="current_page != 'Home'">
+							<div class="col-md-3">
+								<div id="left_menu_top" class="oe_structure col-md-12 mb16 mt16">
+									<!-- cycle through menu backwards -->
+									<t t-set="path_item" t-value="request.env['website.menu'].search([('url', '=', request.httprequest.path)], limit=1)"/>
+									<!-- Parents -->
+									<t t-set="path_count" t-value="0"/>
+									<t t-set="path_id" t-value="0"/>
+									
+									<!-- increments for classes -->
+									<t t-set="path_i" t-value="0"/>
+									<t t-set="path_ii" t-value="0"/>
+									<t t-set="path_iii" t-value="0"/>
+									<t t-set="path_iv" t-value="0"/>
+									<t t-set="xid" t-value="0"/>
+									<t t-set="yid" t-value="0"/>
+									<t t-set="zid" t-value="0"/>
+									<t t-set="qid" t-value="0"/>
+									<t t-set="pthsub" t-value="0"/>
+									
+									<t t-foreach="path_item.get_parents(True)" t-as="step">
+										<t t-set="path_count" t-value="path_count+1"/>
+										<t t-if="path_count == 1">
+											<div class="panel-group" id="accordion">
+											<ul class="level0">
+												<t t-foreach="step.child_id" t-as="x">
+													<ul class="panel panel-default ac1 level1 collapsed collapse" t-att-id="x.id" style="display:none;">
+														<!-- level 1 -->
+														<t t-if="x.child_id">
+															<t t-set="path_i" t-value="path_i+1"/>
+															<t t-set="path_href1" t-value="'.ptha' + str(path_i)"/>
+															<t t-set="path_class1" t-value="'ptha' + str(path_i)"/>
+															<li data-toggle="collapse" data-parent="#accordion" t-att-href="path_href1" t-att-class="'list-group-item panel-collapse collapse active' if x.clean_url() and unslug_url(request.httprequest.path) == unslug_url(x.clean_url()) else 'list-group-item panel-collapse collapse'">
+																<a onClick="event.stopPropagation();" t-att-href="x.clean_url()" t-ignore="true" t-att-target="'_blank' if x.new_window else None">
+																	<span t-field="x.name"/>
+																</a>
+																<t t-if="len(x.child_id) > 0">
+																	<span class="arrow">&#8628;</span>
+																</t>
+															</li>
+															<t t-if="x.clean_url() and unslug_url(request.httprequest.path) == unslug_url(x.clean_url())">
+																<t t-set="xid" t-value="x.id"/>
+																<t t-set="pthsub" t-value="path_class1"/>
+																<script type="text/javascript">
+  													   		 		$( "ul#<t t-esc="x.id"/>" ).css( "display", "block" );
+  													   		 		$( "ul#<t t-esc="x.id"/>").collapse("show");
+  													  			</script>
+															</t>
+														</t>
+														<!-- level 2 -->
+														<t t-foreach="x.child_id" t-as="y">
+															<ul t-attf-class="level2 {{path_class1}} collapsed collapse" t-att-id="y.id"  data-toggle="collapse" data-parent="#accordion">
+																<t t-set="path_ii" t-value="path_ii+1"/>
+																<t t-set="path_href2" t-value="'.pthb' + str(path_ii)"/>
+																<t t-set="path_class2" t-value="'pthb' + str(path_ii)"/>
+																<li  data-toggle="collapse" data-parent="#accordion" t-att-href="path_href2" t-att-class="'list-group-item active panel-collapse collapse' if y.clean_url() and unslug_url(request.httprequest.path) == unslug_url(y.clean_url()) else 'list-group-item panel-collapse collapse'">
+																	<a onClick="event.stopPropagation();" t-att-href="y.clean_url()" t-ignore="true" t-att-target="'_blank' if y.new_window else None">
+																		<span t-field="y.name"/>
+																	</a>
+																	<t t-if="len(y.child_id) > 0">
+																		<span class="arrow">&#8628;</span>
+																	</t>
+																</li>
+																<t t-if="y.clean_url() and unslug_url(request.httprequest.path) == unslug_url(y.clean_url())">
+																	<t t-set="yid" t-value="y.id"/>
+																	<t t-set="pthsub" t-value="path_class2"/>
+																	<script type="text/javascript">
+																		$( "ul#<t t-esc="x.id"/>" ).css( "display", "block" );
+																		$( "ul#<t t-esc="y.id"/>" ).collapse("show");
+																		$( "ul#<t t-esc="y.id"/>" ).parents("ul.collapse").collapse("show");
+																	 </script>
+																</t>
+																<!-- level 3 -->
+																<t t-foreach="y.child_id" t-as="z">
+																	<ul t-attf-class="level3 {{path_class2}} collapsed collapse" t-att-id="z.id" data-toggle="collapse" data-parent="#accordion">
+																		<t t-set="path_iii" t-value="path_iii+1"/>
+																		<t t-set="path_href3" t-value="'.pthc' + str(path_iii)"/>
+																		<t t-set="path_class3" t-value="'pthc' + str(path_iii)"/>
+																		<li data-toggle="collapse" data-parent="#accordion" t-att-href="path_href3" t-att-class="'list-group-item active panel-collapse collapse' if z.clean_url() and unslug_url(request.httprequest.path) == unslug_url(z.clean_url()) else 'list-group-item panel-collapse collapse'">
+																			<a onClick="event.stopPropagation();" t-att-href="z.clean_url()" t-ignore="true" t-att-target="'_blank' if z.new_window else None">
+																				<span t-field="z.name"/>
+																			</a>
+																			<t t-if="len(z.child_id) > 0">
+																				<span class="arrow">&#8628;</span>
+																			</t>
+																		</li>
+																		<t t-if="z.clean_url() and unslug_url(request.httprequest.path) == unslug_url(z.clean_url())">
+																			<t t-set="zid" t-value="z.id"/>
+																			<t t-set="pthsub" t-value="path_class3"/>
+																			<script type="text/javascript">
+																				$( "ul#<t t-esc="x.id"/>" ).css( "display", "block" );
+																				$( "ul#<t t-esc="z.id"/>" ).collapse("show");
+																				$( "ul#<t t-esc="z.id"/>" ).parents("ul.collapse").collapse("show");
+																		 	</script>
+																		</t>
+																		<!-- level 4 -->
+																		<t t-foreach="z.child_id" t-as="q">
+																			<ul t-attf-class="level4 {{path_class3}} collapsed collapse" t-att-id="q.id" >
+																				<li t-att-class="'list-group-item panel-collapse collapse' if q.clean_url() and unslug_url(request.httprequest.path) == unslug_url(q.clean_url()) else 'list-group-item panel-collapse collapse'">
+																					<a onClick="event.stopPropagation();" t-att-href="q.clean_url()" t-ignore="true" t-att-target="'_blank' if q.new_window else None">
+																						<span t-field="q.name"/>
+																					</a>
+																				</li>
+																				<t t-if="q.clean_url() and unslug_url(request.httprequest.path) == unslug_url(q.clean_url())">
+																					<t t-set="qid" t-value="q.id"/>
+																					<t t-set="pthsub" t-value="path_class4"/>
+																					<script type="text/javascript">
+																						$( "ul#<t t-esc="x.id"/>" ).css( "display", "block" );
+																						$( "ul#<t t-esc="q.id"/>" ).collapse("show");
+																						$( "ul#<t t-esc="q.id"/>" ).parents("ul.collapse").collapse("show");
+																					</script>
+																				</t>
+																			</ul>
+																		</t>
+																	</ul>
+																</t>
+															</ul>
+														</t>
+													</ul>
+												</t>
+												<script type="text/javascript">
+  													$( "ul#<t t-esc="xid"/>" ).siblings("ul.collapse").collapse("show");
+  													$( "ul#<t t-esc="yid"/>" ).siblings("ul.collapse").collapse("show");
+  													$( "ul#<t t-esc="zid"/>" ).siblings("ul.collapse").collapse("show");
+  													$( "ul#<t t-esc="qid"/>" ).siblings("ul.collapse").collapse("show");
+  													
+  													$( "ul.<t t-esc="pthsub"/>").collapse("show");
+  													  			
+  												</script>
+											</ul>
+											</div>
+										</t>
+									</t>
+								</div>
+								<div class="col-md-12 mb16 mt16 topcat">
+									<h3>Top Categories</h3>
+									<ul style="border:1px solid #eee;">
+										<li><span class="dot"/>In-Bay Automatic</li>
+										<li><span class="dot"/>Tunnel Wash</li>
+										<li><span class="dot"/>Self Serve</li>
+										<li><span class="dot"/>Fleet Wash</li>
+										<li><span class="dot"/>Mobile Wash</li>
+										<li><span class="dot"/>Chemicals</li>
+										<li><span class="dot"/>Water Treatment</li>
+										<li><span class="dot"/>Meterboxes</li>
+										<li><span class="dot"/>Pos Systems</li>
+										<li><span class="dot"/>Pay Stations</li>
+										<li><span class="dot"/>Change Machines</li>
+										<li><span class="dot"/>Signs &amp; Canopies</li>
+										<li><span class="dot"/>Bay Accessories</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<t t-raw="0"/>
+							</div>
+						</t>
+						<t t-else="">
+							<div class="col-md-12">
+								<t t-raw="0"/>
+							</div>
+						</t>
+					</div>
+				</main>
+			</xpath>
+		</template>
+		<!-- 
+			submenu_extend will provide for flyout menus along with the following css:
+				.navbar-nav li:hover > ul.dropdown-menu {
+					display: block;
+				}
+				.dropdown-submenu {
+					position:relative;
+				}
+				.dropdown-submenu>.dropdown-menu {
+					top:0;
+					left:100%;
+					margin-top:-6px;
+				}
+		-->
+		<template id="submenu_extend" name="rlm_x1 submenu extend" inherit_id="website.submenu">
+			<xpath expr="." position="replace">
+				<t name="Submenu" t-name="rlm_x1.submenu_extend">
+					<!-- uncomment for flyout menus -->
+					<!--					
+				<li t-if="not submenu.child_id" t-att-class="         'active' if submenu.clean_url() and unslug_url(request.httprequest.path) == unslug_url(submenu.clean_url()) else None         ">
+						<a t-att-href="submenu.clean_url()" t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+							<span t-field="submenu.name"/>
+						</a>
+					</li>
+					<li t-if="submenu.child_id" t-attf-class="dropdown #{         (submenu.clean_url() and submenu.clean_url() != '/' and any([request.httprequest.path == child.url for child in submenu.child_id if child.url]) or          (submenu.clean_url() and request.httprequest.path == submenu.clean_url())) and 'active'         }">
+						<a class="dropdown-toggle" t-att-href="submenu.url">
+							<span t-field="submenu.name"/>
+							<span class="caret" t-ignore="true"/>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<t t-foreach="submenu.child_id" t-as="submenu">
+								<li t-if="not submenu.child_id" t-att-class="         'active' if submenu.clean_url() and unslug_url(request.httprequest.path) == unslug_url(submenu.clean_url()) else None         ">
+									<a t-att-href="submenu.clean_url()" t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+										<span t-field="submenu.name"/>
+									</a>
+								</li>
+								<li t-if="submenu.child_id" t-attf-class="dropdown dropdown-submenu #{         (submenu.clean_url() and submenu.clean_url() != '/' and any([request.httprequest.path == child.url for child in submenu.child_id if child.url]) or          (submenu.clean_url() and request.httprequest.path == submenu.clean_url())) and 'active'         }">
+									<a class="dropdown-toggle" t-att-href="submenu.clean_url()">
+										<span t-field="submenu.name"/>
+									</a>
+								</li>
+							</t>
+						</ul>
+				
+				</li>-->
+					<li t-if="not submenu.child_id" t-att-class="         'active' if submenu.clean_url() and unslug_url(request.httprequest.path) == unslug_url(submenu.clean_url()) else None         ">
+						<a t-att-href="submenu.clean_url()" t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+							<span t-field="submenu.name"/>
+						</a>
+					</li>
+					<li t-if="submenu.child_id" t-attf-class="dropdown #{         (submenu.clean_url() and submenu.clean_url() != '/' and any([request.httprequest.path == child.url for child in submenu.child_id if child.url]) or          (submenu.clean_url() and request.httprequest.path == submenu.clean_url())) and 'active'         }">
+						<a class="dropdown-toggle" data-toggle="dropdown" t-att-href="submenu.url">
+							<span t-field="submenu.name"/>
+							<span class="caret" t-ignore="true"/>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<t t-foreach="submenu.child_id" t-as="submenu">
+								<li t-att-class="         'active' if submenu.clean_url() and unslug_url(request.httprequest.path) == unslug_url(submenu.clean_url()) else None         ">
+									<a t-att-href="submenu.clean_url()" t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+										<span t-field="submenu.name"/>
+									</a>
+								</li>
+							</t>
+						</ul>
+					</li>
+				</t>
+			</xpath>
+		</template>
+	</data>
+</odoo>

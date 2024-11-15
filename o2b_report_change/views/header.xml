@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="external_layout_standard_inh" inherit_id="web.external_layout_standard">
+     <xpath expr="//div[@class='header']" position="replace">
+        <div class="header">
+            <t t-if="doc">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+            </t>
+            <t t-if="o">
+                <t t-set="doc" t-value="o.with_context({'lang':o.partner_id.lang})" />
+            </t>
+            <div class="row">
+                <div class="col-xs-8" name="company_address">
+                    <div class="col-xs-4" style="margin-left: -5px;">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 40px;"/>
+                    </div>
+                    &#160;&#160;&#160;<span t-field="company.partner_id"
+                        t-field-options='{"widget": "contact", "fields": ["name","city"], "no_marker": true}'
+                        style="display:inline-block;"/>
+                </div>
+                
+                <t t-if="doc and doc._name =='sale.order'">
+                    <div class="col-xs-13 text-right" style="margin-top:0px;">
+                        <h3>
+                            <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                                <span t-if="doc.state not in ['draft','sent']">Order #</span>
+                                <span t-if="doc.state in ['draft','sent']">Quotation #</span>
+                            </t>
+                            <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                                <span>Pro-Forma Invoice # </span>
+                            </t>
+                            <span t-esc="doc.name"/>
+                        </h3>
+                        <t t-if="doc.confirmation_date and doc.state not in ['draft','sent']" class="col-xs-3 text-right">
+                            <p><strong>Date Ordered:</strong>
+                            <span t-field="doc.confirmation_date" t-field-options="{&quot;format&quot;: &quot;MM/dd/yyyy&quot;}"/></p>
+                        </t>
+                        <t t-if="doc.date_order and doc.state in ['draft','sent']" class="col-xs-3 text-right">
+                            <p><strong>Date:</strong>
+                            <span t-field="doc.date_order" t-field-options="{&quot;format&quot;: &quot;MM/dd/yyyy&quot;}"/></p>
+                        </t>
+                    </div>
+                </t>
+
+                <t t-if="doc and doc._name =='purchase.order'">
+                    <div class="col-xs-13 text-right" style="margin-top:0px;">
+                        <h3>
+                            <span t-if="doc.state in ['draft','sent']">RFQ#</span>
+                            <span t-if="doc.state not in ['draft','sent']">PO#</span>
+                            <span t-esc="o.sudo().name_po_change()"/>
+                        </h3>
+                        <t t-if="o.date_order" class="col-xs-3 text-right">
+                            <span t-if="doc.state in ['draft','sent']"><strong>Date:</strong></span>
+                            <span t-if="doc.state not in ['draft','sent']"><strong>Order Date:</strong></span>
+                            <span t-field="o.date_order" t-field-options="{&quot;format&quot;: &quot;MM/dd/yyyy&quot;}"/>
+                        </t>
+                    </div>
+                </t>
+                
+                <t t-if="doc and doc._name =='account.invoice'">
+                    <div class="col-xs-13 text-right" style="margin-top:0px;">
+                        <h3>
+                            <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice #</span>
+                            <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                            <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                            <span t-if="o.type == 'out_refund'">Credit Note</span>
+                            <span t-if="o.type == 'in_refund'">Vendor Credit Note</span>
+                            <span t-if="o.type == 'in_invoice'">Vendor Bill #</span>
+                            <span t-esc="o.sudo().number_change()"/>
+                        </h3>
+                        <t t-if="o.date_invoice" class="col-xs-3 text-right">
+                            <p><strong>Invoice Date:</strong>
+                            <span t-field="o.date_invoice"/></p>
+                        </t>
+                    </div>
+                </t>
+                <t t-if="doc and doc._name =='stock.picking'">
+                    <div class="col-xs-13 text-right" style="margin-top:0px;">
+                        <h3>
+                            <t t-if="o.purchase_id and not o.sale_id">
+                                <span >Receipt #</span>
+                                <span t-esc="o.sudo().name_change()"/>
+                            </t>
+                            <t t-if="'IN' not in o.name">
+                                <span t-esc="o.sudo().name_change()"/>
+                            </t>
+                        </h3>
+                        <t class="col-xs-3 text-right">
+                            <p><strong>Date:</strong>
+                            <t t-if="o.state == 'done'">
+                                <span t-field="o.date_done" t-field-options="{&quot;format&quot;: &quot;MM/dd/yyyy&quot;}"/>
+                            </t>
+                            <t t-if="o.state != 'done'">
+                                <span t-field="o.scheduled_date" t-field-options="{&quot;format&quot;: &quot;MM/dd/yyyy&quot;}"/>
+                            </t></p>
+                        </t>
+                    </div>
+                </t>
+            </div>
+            <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                <div class="col-xs-14">
+                    <div style="border-bottom: 1px solid black;"/>
+                </div>
+            </div>
+        </div>
+     </xpath>
+
+     <xpath expr="//div[@class='footer']" position="replace">
+        <div class="footer">
+            <t t-if="doc">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+            </t>
+            <t t-if="o">
+                <t t-set="doc" t-value="o.with_context({'lang':o.partner_id.lang})" />
+            </t>
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <li t-if="company.phone">Phone: <span t-field="company.phone"/></li>
+                    
+                    <t t-if="doc and doc._name =='sale.order'">
+                        <t t-if="doc.state in ['draft','sent']">
+                            <li t-if="company.quotes_email">Email: <span t-field="company.quotes_email"/></li>
+                        </t>
+                        <t t-if="doc.state not in ['draft','sent']">
+                            <li t-if="company.so_invoice_email">Email: <span t-field="company.so_invoice_email"/></li>
+                        </t>
+                    </t>
+
+                    <t t-if="doc and doc._name =='account.invoice'">
+                        <li t-if="company.so_invoice_email">Email: <span t-field="company.so_invoice_email"/></li>
+                    </t>
+                    <t t-if="doc and doc._name =='purchase.order'">
+                        <li t-if="company.purchase_email">Email: <span t-field="company.purchase_email"/></li>
+                    </t>
+                    <t t-if="doc and doc._name not in ['sale.order','account.invoice','purchase.order']">
+                        <li t-if="company.email">Email: <span t-field="company.email"/></li>
+                    </t>
+
+                    <li t-if="company.website">Web: <span t-field="company.website"/></li>
+                    <li t-if="company.partner_id.x_studio_field_AA4JU">Fax: <span t-field="company.partner_id.x_studio_field_AA4JU"/></li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+     </xpath>
+ </template>
+
+ <template id="contact_new" inherit_id="base.contact">
+   <xpath expr="//address" position="replace">
+           <address t-ignore="true" class="mb0" itemscope="itemscope" itemtype="http://schema.org/Organization">
+            <div t-if="not (('name' in fields) or (address and 'address' in fields) or (city and 'city' in fields) or (mobile and 'mobile' in fields) or (website and 'website' in fields) or (email and 'email' in fields))" class="css_non_editable_mode_hidden">
+                --<span class="text-muted" t-esc="name"/>--
+            </div>
+            <t t-if="object.country_id.name_position != 'after'">
+                <t t-call="base.contact_name"/>
+            </t>
+            <div itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
+                <div t-if="address and 'address' in fields">
+                    <i t-if="not options.get('no_marker')" class="fa fa-map-marker fa-fw"/> <span itemprop="streetAddress" t-raw="address.replace('\n', options.get('no_tag_br') and ', ' or ('&lt;br/&gt;%s' % ('' if options.get('no_marker') else '&amp;nbsp; &amp;nbsp; ')))"/>
+                </div>
+                <div t-if="city and 'city' in fields">
+                    <i t-if="not options.get('no_marker')" class="fa fa-map-marker fa-fw"/>
+                    <span itemprop="addressLocality" t-raw="object.street"/>
+                    <span itemprop="addressLocality" t-raw="object.street2"/><br/>
+                    <span itemprop="addressLocality" t-raw="city"/>,
+                    <span t-if="object.state_id" itemprop="addressLocality" t-raw="object.state_id.code"/>,
+                    <span itemprop="addressLocality" t-raw="object.zip"/>
+                </div>
+                 <div t-if="phone and 'phone' in fields"><i t-if="not options.get('no_marker') or options.get('phone_icons')" class="fa fa-phone fa-fw"/> <span itemprop="telephone" t-esc="phone"/></div>
+                <div t-if="mobile and 'mobile' in fields"><i t-if="not options.get('no_marker') or options.get('phone_icons')" class="fa fa-mobile fa-fw"/> <span itemprop="telephone" t-esc="mobile"/></div>
+                <div t-if="fax and 'fax' in fields"><i t-if="not options.get('no_marker') or options.get('phone_icons')" class="fa fa-fax fa-fw"/> <span itemprop="faxNumber" t-esc="fax"/></div>
+
+                <div t-if="x_studio_field_AA4JU and 'x_studio_field_AA4JU' in fields"><i t-if="not options.get('no_marker') or options.get('phone_icons')" class="fa fa-fax fa-fw"/> <span itemprop="faxNumber" t-esc="x_studio_field_AA4JU"/></div>
+               
+                <div t-if="website and 'website' in fields">
+                    <i t-if="not options.get('no_marker')" class="fa fa-globe"/>
+                    <a t-att-href="website and '%s%s' % ('http://' if '://' not in website else '',website)"><span itemprop="website" t-esc="website"/></a>
+                </div>
+                <div t-if="email and 'email' in fields"><i t-if="not options.get('no_marker')" class="fa fa-envelope fa-fw"/> <span itemprop="email" t-esc="email"/></div>
+            </div>
+            
+            <t t-if="object.country_id and object.country_id.name_position == 'after'">
+                <t t-call="base.contact_name"/>
+            </t>
+        </address>
+  </xpath>
+</template>
+
+</odoo>

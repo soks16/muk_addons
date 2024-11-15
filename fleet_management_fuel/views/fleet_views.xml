@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id='fleet_vehicle_log_fuel_view_kanban' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.log.fuel.kanban</field>
+        <field name="model">fleet.vehicle.log.fuel</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_fuel_view_kanban"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="/kanban" position="inside">
+                <field name="next_km"/>
+            </xpath>
+
+            <xpath expr="//field[@name='purchaser_id']" position="after">
+
+                <span t-if="record.next_km.value" style="color: red;">
+                    <br/>
+                    <strong>Km prochain vidange : <t t-esc="record.next_km.value"/></strong>
+                </span>
+
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id='fleet_vehicle_log_fuel_view_search' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.log.fuel.search</field>
+        <field name="model">fleet.vehicle.log.fuel</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_fuel_view_search"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//filter[@name='groupby_vehicle']" position="after">
+                <filter string="Activités en retard" name="activities_overdue"
+                    domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                    help="Show all records which has next action date is before today"/>
+                <filter string="Activités d'aujourd'hui" name="activities_today"
+                    domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="Activités futures" name="activities_upcoming_all"
+                    domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))
+                    ]"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record id="fleet_vehicle_log_fuel_view_form_inhe" model="ir.ui.view">
+        <field name="name">fleet.vehicle.log.fuel.form</field>
+        <field name="model">fleet.vehicle.log.fuel</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_fuel_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="/form/sheet" position="before">
+                <header>
+                    <button name="consommation_gasoil" id="consommation_gasoil"
+                        string="Confirmer" class="btn-primary" type="object"
+                        attrs="{'invisible': [('validate_cons', '=', True)]}"/>
+                </header>
+            </xpath>
+            <field name="liter" position="before">
+                    <field name="consom_type"/>
+                    <field name="product_id"/>
+                    <field name="validate_cons" invisible='1'/>
+            </field>
+           <!--  <xpath expr="//field[@name='price_per_liter']" position="attributes">
+                <attribute name="readonly">True</attribute>
+            </xpath> -->
+            <!-- <xpath expr="//field[@name='amount']" position="attributes">
+                <attribute name="readonly">True</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='odometer']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="/form/sheet" position="after">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="fleet_vehicle_log_services_view_form" model="ir.ui.view">
+        <field name="name">fleet.vehicle.log.services.form</field>
+        <field name="model">fleet.vehicle.log.services</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//label[@for='odometer']" position="before">
+                    <field name="next_km" attrs="{'invisible': [('validate_suivi', '=', False)]}"/>
+                    <field name="validate_suivi" invisible='1'/>
+            </xpath>
+            <!-- attrs="{'invisible': [('cost_subtype_id.validate_suivi', '=', True)]}" -->
+        </field>
+    </record>
+
+
+
+    <record id="fleet_vehicle_view_form_inhe" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+
+
+            <field name="driver_id" position="before">
+                    <field name="user_id"/>
+            </field>
+            <field name="color" position="after">
+                    <field name="assurance_date"/>
+                    <field name="visite_date"/>
+                    <field name="carnet_date"/>
+                    <field name="assurance_notif"/>
+                    <field name="visite_notif"/>
+                    <field name="carnet_notif"/>
+            </field>
+            <xpath expr="//field[@name='message_follower_ids']" position="after">
+                    <field name="activity_ids" widget="mail_activity"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+    <record id='fleet_vehicle_view_kanban' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.kanban</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_kanban"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="/kanban" position="inside">
+                    <field name="assurance_date"/>
+                    <field name="visite_date"/>
+                    <field name="carnet_date"/>
+            </xpath>
+
+            <xpath expr="/kanban/templates/t/div/div[2]" position="after">
+
+<!-- <div t-if="record.assurance_date.raw_value and record.assurance_date.raw_value gt context_today().strftime('%Y-%m-%d')" style="margin: 0px; color: #00FF00;">                                                                                                               
+    <b>Date assurance :</b> <t t-esc="record.assurance_date.value"/>   
+</div>
+
+<div t-if="record.assurance_date.raw_value and record.assurance_date.raw_value lt context_today().strftime('%Y-%m-%d')" style="margin: 0px; color: #FF0000;">                                                                                                                                     
+    <b>Date assurance :</b> <t t-esc="record.assurance_date.value"/>    
+</div>
+
+<div t-if="record.assurance_date.raw_value and record.assurance_date.raw_value == context_today().strftime('%Y-%m-%d')" style="margin: 0px; color: #FF8C00;">                                           
+
+    <b>Date assurance :</b> <t t-esc="record.assurance_date.value"/>    
+</div> -->
+
+
+            <div>
+                <t t-if="record.assurance_date.raw_value and record.assurance_date.raw_value &lt; (new Date())" t-set="red">oe_kanban_text_red</t>
+                <t t-if="record.assurance_date.raw_value and record.assurance_date.raw_value &lt; (new Date())">    Date assurance : <span t-attf-class="#{red}"><i><field name="assurance_date"/></i></span>
+                <br/></t>
+                <t t-if="record.assurance_date.raw_value and record.assurance_date.raw_value &gt;= (new Date())">
+                    Date assurance : <span><i><field name="assurance_date"/></i></span>
+                <br/></t>
+
+                <t t-if="record.visite_date.raw_value and record.visite_date.raw_value &lt; (new Date())" t-set="red">oe_kanban_text_red</t>
+                <t t-if="record.visite_date.raw_value and record.visite_date.raw_value &lt; (new Date())">    
+                    Date visite technique : <span t-attf-class="#{red}"><i><field name="visite_date"/></i></span>
+                <br/></t>
+                <t t-if="record.visite_date.raw_value and record.visite_date.raw_value &gt;= (new Date())">
+                    Date visite technique : <span><i><field name="visite_date"/></i></span>
+                <br/></t>
+
+                <t t-if="record.carnet_date.raw_value and record.carnet_date.raw_value &lt; (new Date())" t-set="red">oe_kanban_text_red</t>
+                <t t-if="record.carnet_date.raw_value and record.carnet_date.raw_value &lt; (new Date())">    
+                    Date carnet de circulation : <span t-attf-class="#{red}"><i><field name="carnet_date"/></i></span>
+                <br/></t>
+                <t t-if="record.carnet_date.raw_value and record.carnet_date.raw_value &gt;= (new Date())">
+                    Date carnet de circulation : <span><i><field name="carnet_date"/></i></span>
+                <br/></t>
+            </div>
+
+               <!--  <span t-if="record.assurance_date.value" style="color: red;">
+                    <br/>
+                    <strong>Date assurance : <t t-esc="record.assurance_date.value"/></strong>
+                </span> -->
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

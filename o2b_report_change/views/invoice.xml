@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="report_invoice_document_inh1" inherit_id="account.report_invoice_document">
+     	<xpath expr="//div[@class='page']" position="replace">
+                <div class="page">
+                    <div class="row">
+		                <div name="invoice_address" class="col-xs-5" style="border: 1px solid black;">     
+			                <div t-if="o.partner_id">
+			                    <strong>Bill To:</strong><br/>
+                                <div  style="border-bottom:1px solid;width:355px;"/>
+			                    <t t-if="o.partner_id.company_type =='person' and o.partner_id.parent_id">
+			                        <span t-esc="o.partner_id.ref"/>
+			                        <t t-if="(o.partner_id.country_id and o.partner_id.country_id.code == 'US') or not o.partner_id.country_id">
+                                        <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["city","parent_name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                    </t>
+                                    <t t-if="o.partner_id.country_id and o.partner_id.country_id.code != 'US'">
+                                        <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address","parent_name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                    </t>
+                                    <t t-if="o.partner_id.x_studio_field_AA4JU">
+                                        <i class="fa fa-fax" aria-hidden="true">
+                                        <span t-field="o.partner_id.x_studio_field_AA4JU"/>
+                                        </i>
+                                    </t>
+			                     </t>
+			                     <t t-if="o.partner_id.company_type =='person' and not o.partner_id.parent_id">
+			                        <span t-esc="o.partner_id.ref"/>
+			                        <t t-if="(o.partner_id.country_id and o.partner_id.country_id.code == 'US') or not o.partner_id.country_id">
+                                        <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["city","parent_name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                    </t>
+                                    <t t-if="o.partner_id.country_id and o.partner_id.country_id.code != 'US'">
+                                        <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address","parent_name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                    </t>
+                                    <t t-if="o.partner_id.x_studio_field_AA4JU">
+                                        <i class="fa fa-fax" aria-hidden="true">
+                                        <span t-field="o.partner_id.x_studio_field_AA4JU"/>
+                                        </i>
+                                    </t>
+			                     </t>
+			                     
+                                 <t t-if="o.partner_id.company_type =='company' and not o.partner_id.parent_id">
+			                        <span t-esc="o.partner_id.ref"/>
+			                        <t t-if="(o.partner_id.country_id and o.partner_id.country_id.code == 'US') or not o.partner_id.country_id">
+                                        <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["city","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                    </t>
+                                    <t t-if="o.partner_id.country_id and o.partner_id.country_id.code != 'US'">
+                                        <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                    </t>
+                                    <t t-if="o.partner_id.x_studio_field_AA4JU">
+                                        <i class="fa fa-fax" aria-hidden="true">
+                                        <span t-field="o.partner_id.x_studio_field_AA4JU"/>
+                                        </i>
+                                    </t>
+			                     </t> 
+			                     <t t-if="o.partner_id.company_type =='company' and  o.partner_id.parent_id">
+			                        <span t-esc="o.partner_id.ref"/>
+                                    <t t-if="(o.partner_id.country_id and o.partner_id.country_id.code == 'US') or not o.partner_id.country_id">
+			                             <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["city","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                     </t>
+                                     <t t-if="o.partner_id.country_id and o.partner_id.country_id.code != 'US'">
+                                        <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                     </t>
+                                     <t t-if="o.partner_id.x_studio_field_AA4JU">
+                                        <i class="fa fa-fax" aria-hidden="true">
+                                        <span t-field="o.partner_id.parent_id.x_studio_field_AA4JU"/>
+                                        </i>
+                                    </t>
+			                     </t> 
+			                </div>
+		                </div>
+		                <div class="col-xs-5 col-xs-offset-2" style="border: 1px solid black;" t-if="o.partner_shipping_id">
+		                    <strong>Ship To:</strong>
+                            <div  style="border-bottom:1px solid;width:355px;"/>
+		                    <t t-if="o.partner_shipping_id.company_type =='person' and o.partner_shipping_id.parent_id">
+                                <t t-if="(o.partner_shipping_id.parent_id.country_id and o.partner_shipping_id.parent_id.country_id.code == 'US') or not o.partner_shipping_id.parent_id.country_id">
+		                          <div t-field="o.partner_shipping_id" t-options='{"widget": "contact", "fields": ["city","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.parent_id.country_id and o.partner_shipping_id.parent_id.country_id.code != 'US'">
+                                    <div t-field="o.partner_shipping_id" t-options='{"widget": "contact", "fields": ["address","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.x_studio_field_AA4JU">
+                                    <i class="fa fa-fax" aria-hidden="true">
+                                        <span t-field="o.partner_shipping_id.parent_id.x_studio_field_AA4JU"/>
+                                    </i>
+                                </t>
+		                     </t>
+
+		                     <t t-if="o.partner_shipping_id.company_type =='company' and not o.partner_shipping_id.parent_id">
+		                        <t t-if="(o.partner_shipping_id.country_id and o.partner_shipping_id.country_id.code == 'US') or not o.partner_shipping_id.country_id">
+                                    <div t-field="o.partner_shipping_id" t-options='{"widget": "contact", "fields": ["city","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.country_id and o.partner_shipping_id.country_id.code != 'US'">
+                                    <div t-field="o.partner_shipping_id" t-options='{"widget": "contact", "fields": ["address","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.x_studio_field_AA4JU">
+                                    <i class="fa fa-fax" aria-hidden="true">
+                                        <span t-field="o.partner_shipping_id.x_studio_field_AA4JU"/>
+                                    </i>
+                                </t>
+		                     </t>
+
+		                      <t t-if="o.partner_shipping_id.company_type =='company' and o.partner_shipping_id.parent_id">
+		                        <t t-if="(o.partner_shipping_id.country_id and o.partner_shipping_id.country_id.code == 'US') or not o.partner_shipping_id.country_id">
+                                    <div t-field="o.partner_shipping_id" t-options='{"widget": "contact", "fields": ["city","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.country_id and o.partner_shipping_id.country_id.code != 'US'">
+                                    <div t-field="o.partner_shipping_id" t-options='{"widget": "contact", "fields": ["address","name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.x_studio_field_AA4JU">
+                                    <i class="fa fa-fax" aria-hidden="true">
+                                        <span t-field="o.partner_shipping_id.parent_id.x_studio_field_AA4JU"/>
+                                    </i>
+                                </t>
+		                     </t>
+		                </div>
+
+                    </div>
+
+                    <div class="row mt32 mb32" style="border: 1px solid black;">
+                        <div class="col-xs-2" t-if="o.name">
+                            <strong>Description:</strong>
+                            <p t-field="o.name"/>
+                        </div>
+                        
+                        <div class="col-xs-2" t-if="o.date_due and o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">
+                            <strong>Due Date:</strong>
+                            <p t-field="o.date_due"/>
+                        </div>
+                        <div class="col-xs-2" t-if="o.origin">
+                            <strong>Source:</strong>
+                            <p t-field="o.origin"/>
+                        </div>
+                        <div class="col-xs-3" t-if="o.partner_id.ref">
+                            <strong>Customer Code:</strong>
+                            <p t-field="o.partner_id.ref"/>
+                        </div>
+                        <div name="reference" class="col-xs-2" t-if="o.reference">
+                            <strong>Reference:</strong>
+                            <p t-field="o.reference"/>
+                        </div>
+                        <div class="col-xs-3" t-if="o.payment_term_id">
+                            <strong>Terms:</strong>
+                            <p t-field="o.payment_term_id"/>
+                        </div>
+                        <div class="col-xs-2" t-if="o.po_number">
+                            <strong>PO Number:</strong>
+                            <p t-field="o.po_number"/>
+                        </div>
+                        <div class="col-xs-2" t-if="o.ship_via">
+                            <strong>Ship Via:</strong>
+                            <p t-field="o.ship_via"/>
+                        </div>
+                        <div class="col-xs-3" t-if="o.shipment_date">
+                            <strong>Shipment Date:</strong>
+                            <p t-field="o.shipment_date"/>
+                        </div>
+                    </div>
+
+                    <!-- Is there a discount on at least one line? -->
+                    <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
+                    <t t-set="display_tax" t-value="any([l.invoice_line_tax_ids for l in o.invoice_line_ids])"/>
+
+                    <div class="row mt32 mb32">
+                        <table class="table table-bordered table table-condensed" name="invoice_line_table">
+                            <thead>
+                                <tr>
+                                	<th>Item</th>
+                                    <th>Description</th>
+                                    <th class="hidden">Source Document</th>
+                                    <th class="text-right">Quantity</th>
+                                    <th class="text-right">U/M</th>
+                                    <th class="text-right">Unit Price</th>
+                                    <th t-if="display_discount" class="text-right">Disc.(%)</th>
+                                    <th t-if="display_tax" class="text-right">Taxes</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody class="invoice_tbody">
+                                <tr t-foreach="o.invoice_line_ids" t-as="l">
+                                    <td><span t-field="l.product_id"/></td>
+                                    <td><span t-field="l.name"/></td>
+                                    <td class="hidden"><span t-field="l.origin"/></td>
+                                    <td class="text-right">
+                                        <span t-field="l.quantity"/> 
+                                    </td>
+                                    <td class="text-right">
+                                    	<span t-field="l.uom_id"  groups="product.group_uom"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="l.price_unit"/>
+                                    </td>
+                                    <td t-if="display_discount" class="text-right">
+                                        <span t-field="l.discount"/>
+                                    </td>
+                                    <td t-if="display_tax" class="text-right">
+                                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.invoice_line_tax_ids))"/>
+                                    </td>
+                                    <td class="text-right" id="subtotal">
+                                        <span t-field="l.price_subtotal"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+
+                    <div class="clearfix">
+                        <div id="total" class="row">
+                            <div class="col-xs-4 pull-right">
+                                <table class="table table-condensed" style="min-width: 300px;max-width: 450px;">
+                                    <tr class="border-black" style="border-bottom:1px solid #dddddd;">
+                                        <td><strong>Subtotal</strong></td>
+                                        <td class="text-right">
+                                            <span t-field="o.amount_untaxed" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                    <t t-foreach="o._get_tax_amount_by_group()" t-as="amount_by_group">
+                                        <tr style="border-bottom:1px solid #dddddd;">
+                                            <t t-if="len(o.tax_line_ids) == 1 and o.amount_untaxed == amount_by_group[2]">
+                                                <td>
+                                                    <span t-esc="amount_by_group[0]"/>
+                                                    <span>&amp;nbsp;<span>on</span>
+                                                        <t t-esc="amount_by_group[4]"/>
+                                                    </span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="amount_by_group[3]"/>
+                                                </td>
+                                            </t>
+                                            <t t-else="">
+                                                <td><span t-esc="amount_by_group[0]"/></td>
+                                                <td class="text-right">
+                                                    <span t-esc="amount_by_group[3]" />
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                    <tr class="border-black">
+                                        <td><strong>Total</strong></td>
+                                        <td class="text-right">
+                                            <span t-field="o.amount_total" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-foreach="range(int(o.note_lines))" t-as="l">
+                        <br/>
+                    </t>
+                    <!--<p t-if="o.comment">
+                        <span t-field="o.comment"/>
+                    </p>-->
+                    <p t-if="o.fiscal_position_id.note">
+                        <span t-field="o.fiscal_position_id.note"/>
+                    </p>
+                </div>
+
+     	</xpath>
+     </template>
+</odoo>

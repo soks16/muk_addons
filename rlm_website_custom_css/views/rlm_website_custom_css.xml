@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <template id="assets_frontend" name="rlm_website_custom_css assets" inherit_id="web.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/rlm_website_custom_css/static/src/less/custom.less"/>
+            </xpath>
+        </template>
+    </data>     
+</openerp>

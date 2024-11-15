@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <!-- <data noupdate="1"> -->
+    <data>
+
+        <record id="vidange_email_templates" model="mail.template">
+            <field name="name">Vidange</field>
+            
+            <field name="email_from">${user.email}</field>
+
+
+           <!--  <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field> -->
+            <field name="subject">Vidange pour ${object.name}</field>
+            <field name="model_id" ref="model_fleet_vehicle_log_fuel"/>
+            <field name="email_to" >${object.vehicle_id.user_id.email}</field>
+            <field name="email_cc" >${object.vehicle_id.driver_id.email}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                
+                <p>Bonjour  ${object.vehicle_id.user_id.name},</p>
+                <p>Vous aurez un evenement de la vidange prochainement pour le véhicule ${object.vehicle_id.name} au Km ${object.next_km}</p>
+
+                <br/>
+                <br/>
+                <br/>
+                
+            </div>
+            ]]></field>
+        </record>
+
+
+        <record id="assurance_email_templates" model="mail.template">
+            <field name="name">Renouvellement assurance</field>
+            
+            <field name="email_from">${user.email}</field>
+
+
+           <!--  <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field> -->
+            <field name="subject">Renouvellement assurance pour ${object.name}</field>
+            <field name="model_id" ref="model_fleet_vehicle"/>
+            <field name="email_to" >${object.user_id.email}</field>
+            <field name="email_cc" >${object.driver_id.email}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                
+                <p>Bonjour  ${object.user_id.name},</p>
+                <p>Le ${object.assurance_date} vous aurez un evenement du renouvellement de l'assurance pour le véhicule ${object.name}</p>
+
+                <br/>
+                <br/>
+                <br/>
+                
+            </div>
+            ]]></field>
+        </record>
+
+
+
+        <record id="visite_email_templates" model="mail.template">
+            <field name="name">Visite technique</field>
+            
+            <field name="email_from">${user.email}</field>
+
+
+           <!--  <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field> -->
+            <field name="subject">Visite technique pour ${object.name}</field>
+            <field name="model_id" ref="model_fleet_vehicle"/>
+            <field name="email_to" >${object.user_id.email}</field>
+            <field name="email_cc" >${object.driver_id.email}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                
+                <p>Bonjour  ${object.user_id.name},</p>
+                <p>Le ${object.visite_date} vous aurez un evenement de la viste technique pour le véhicule ${object.name}</p>
+
+                <br/>
+                <br/>
+                <br/>
+                
+            </div>
+            ]]></field>
+        </record>
+
+
+
+        <record id="carnet_email_templates" model="mail.template">
+            <field name="name">Renouvellement carnet de circulation</field>
+            
+            <field name="email_from">${user.email}</field>
+
+
+           <!--  <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field> -->
+            <field name="subject">Renouvellement carnet de circulation pour ${object.name}</field>
+            <field name="model_id" ref="model_fleet_vehicle"/>
+            <field name="email_to" >${object.user_id.email}</field>
+            <field name="email_cc" >${object.driver_id.email}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                
+                <p>Bonjour  ${object.user_id.name},</p>
+                <p>Le ${object.carnet_date} vous aurez un evenement du renouvellement de carnet de circulation pour le véhicule ${object.name}</p>
+
+                <br/>
+                <br/>
+                <br/>
+                
+            </div>
+            ]]></field>
+        </record>
+
+    </data>
+</odoo>

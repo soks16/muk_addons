@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rlm_x1_rlm_x1,rlm_x1.rlm_x1,model_rlm_x1_rlm_x1,,1,0,0,0

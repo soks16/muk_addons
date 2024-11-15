@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="rlm_two_columns" inherit_id="website.snippets" name="Two Column Snippet">
+		<xpath expr="//div[@id='snippet_content']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/snippet_thumb.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Two Column Snippet</span>
+				</div>
+				<section class="oe_snippet_body">
+					<div class="container text-center">
+						<div class="row">
+							<div class="col-md-6">
+								<h3>Left</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							</div>
+							<div class="col-md-6">
+								<h3>Right</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template id="rlm_page_top" inherit_id="website.snippets" name="Page Top Formatted">
+		<xpath expr="//div[@id='snippet_content']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/page_top.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Page Top Formatted</span>
+				</div>
+				<section class="oe_snippet_body s_text_image bg-white">
+					<div class="container">
+						<div class="row">
+							<div class="mb32 col-md-6 mt32">
+								<h3 style="text-align: right;" class="o_default_snippet_text"/>
+								<p> </p>
+								<p/>
+								<h1 class="text-center" style="font-weight: 500;line-height: 1.1;text-align: center"/>
+								<p> </p>
+								<p/>
+								<blockquote style="text-align: left; font-weight: 500; line-height: 1.1;">
+									<span class="text-black" style="font-size: 24px; font-weight: bold;">Kondor<b style="font-weight: bold"><font class="text-black" style="">®</font></b>&amp;nbsp;&amp;nbsp;Touchless Automatic Suite</span>
+								</blockquote>
+								<p> </p>
+								<h2 class="text-center" style="text-align: left; font-weight: 500; line-height: 1.1;">
+									<font class="text-gray" style="color: rgb(85, 85, 85); font-size: 18px;">
+										<i>Designed to Fit Every Bay and Every Budget.</i>
+									</font>
+								</h2>
+								<p style="text-align: right;" class="o_default_snippet_text"/>
+								<div style="text-align: left;">
+									<span style="color: rgb(85, 85, 85); text-align: justify;">Delivering a clean wash every time, the Kondor equipment line is designed for sleek operation in a comfortable, open environment. This equipment has an innovative design and installation options perfect for almost every bay and business.</span>
+									<br/>
+								</div>
+								<p/>
+								<p style="text-align: left;" class="o_default_snippet_text">&amp;nbsp;</p>
+							</div>
+							<div class="col-md-6 mt32 mb32">
+								<img class="img img-responsive pull-left mb16" src="/rlm_x1/static/src/img/Kondor-Belanger%20Logos.jpg" alt="Odoo text and image block" data-original-title="" title=""/>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template id="rlm_roundbox" inherit_id="website.snippets" name="Rounded Corner Box">
+		<xpath expr="//div[@id='snippet_content']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/snippet_roundbox_thumb.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Rounded Corner Box</span>
+				</div>
+				<section class="oe_snippet_body">
+					<div class="roundbox">
+					  Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template id="rlm_tabs_2" inherit_id="website.snippets" name="Tabs (2)">
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/snippet_tabs.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Tabs (2)</span>
+				</div>
+				<section class="oe_snippet_body">
+					<div class="container">
+						<div class="row">
+							<div class="process">
+								<!-- Nav tabs -->
+								<ul class="nav nav-pills white space-top" role="tablist">
+									<li class="active">
+										<a href="#pill-pr-1" role="tab" data-toggle="tab" title="Step 1" aria-expanded="false"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 1
+									</a>
+									</li>
+									<li class="">
+										<a href="#pill-pr-2" role="tab" data-toggle="tab" title="Step 2" aria-expanded="false"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 2
+									</a>
+									</li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content clear-style">
+									<div class="tab-pane active" id="pill-pr-1">
+										<h3>Step 1</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eaque
+										nihil obcaecati minus perferendis officiis cumque nesciunt quae dolorem
+										ad tenetur voluptate blanditiis labore libero id veritatis similique
+										facere, fugiat soluta omnis minima? Iusto optio hic a reiciendis,
+										inventore numquam impedit quaerat deserunt, voluptatum illum in magni,
+										aspernatur corporis mollitia nam? Ipsum, cumque facilis recusandae
+										commodi dolorum sequi quis possimus, aut, ab incidunt dolorem
+										perferendis rerum tenetur. Labore exercitationem magni perspiciatis
+										laborum, aliquam officia molestias obcaecati, voluptatum quidem eum iure
+										aut, officiis dicta cupiditate ab, sit aliquid. Corporis ducimus ab
+										commodi officia? Inventore suscipit saepe dolorem vitae aperiam autem,
+										iusto id, enim assumenda modi a voluptate aliquam molestiae quidem
+										sapiente, obcaecati recusandae. Magni repellat dignissimos sint iste
+										dolorem maxime accusantium quas repellendus quam ipsa, sapiente, beatae
+										enim ab ex. Optio eveniet necessitatibus, tempora dolor eaque saepe,
+										ipsam vero at officiis cumque, maxime consequuntur in ea, voluptate quae
+										nesciunt hic delectus.
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-2">
+										<h3>Step 2</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template id="rlm_tabs_3" inherit_id="website.snippets" name="Tabs (3)">
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/snippet_tabs.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Tabs (3)</span>
+				</div>
+				<section class="oe_snippet_body">
+					<div class="container">
+						<div class="row">
+							<div class="process">
+								<!-- Nav tabs -->
+								<ul class="nav nav-pills white space-top" role="tablist">
+									<li class="active">
+										<a href="#pill-pr-1" role="tab" data-toggle="tab" title="Step 1" aria-expanded="false"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 1
+									</a>
+									</li>
+									<li class="">
+										<a href="#pill-pr-2" role="tab" data-toggle="tab" title="Step 2" aria-expanded="false"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 2
+									</a>
+									</li>
+									<li class="">
+										<a href="#pill-pr-3" role="tab" data-toggle="tab" title="Step 3" aria-expanded="true"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 3
+									</a>
+									</li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content clear-style">
+									<div class="tab-pane active" id="pill-pr-1">
+										<h3>Step 1</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eaque
+										nihil obcaecati minus perferendis officiis cumque nesciunt quae dolorem
+										ad tenetur voluptate blanditiis labore libero id veritatis similique
+										facere, fugiat soluta omnis minima? Iusto optio hic a reiciendis,
+										inventore numquam impedit quaerat deserunt, voluptatum illum in magni,
+										aspernatur corporis mollitia nam? Ipsum, cumque facilis recusandae
+										commodi dolorum sequi quis possimus, aut, ab incidunt dolorem
+										perferendis rerum tenetur. Labore exercitationem magni perspiciatis
+										laborum, aliquam officia molestias obcaecati, voluptatum quidem eum iure
+										aut, officiis dicta cupiditate ab, sit aliquid. Corporis ducimus ab
+										commodi officia? Inventore suscipit saepe dolorem vitae aperiam autem,
+										iusto id, enim assumenda modi a voluptate aliquam molestiae quidem
+										sapiente, obcaecati recusandae. Magni repellat dignissimos sint iste
+										dolorem maxime accusantium quas repellendus quam ipsa, sapiente, beatae
+										enim ab ex. Optio eveniet necessitatibus, tempora dolor eaque saepe,
+										ipsam vero at officiis cumque, maxime consequuntur in ea, voluptate quae
+										nesciunt hic delectus.
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-2">
+										<h3>Step 2</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-3">
+										<h3>Step 3</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template id="rlm_tabs_4" inherit_id="website.snippets" name="Tabs (4)">
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/snippet_tabs.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Tabs (4)</span>
+				</div>
+				<section class="oe_snippet_body">
+					<div class="container">
+						<div class="row">
+							<div class="process">
+								<!-- Nav tabs -->
+								<ul class="nav nav-pills white space-top" role="tablist">
+									<li class="active">
+										<a href="#pill-pr-1" role="tab" data-toggle="tab" title="Step 1" aria-expanded="false"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 1
+									</a>
+									</li>
+									<li class="">
+										<a href="#pill-pr-2" role="tab" data-toggle="tab" title="Step 2" aria-expanded="false"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 2
+									</a>
+									</li>
+									<li class="">
+										<a href="#pill-pr-3" role="tab" data-toggle="tab" title="Step 3" aria-expanded="true"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 3
+									</a>
+									</li>
+									<li class="">
+										<a href="#pill-pr-4" role="tab" data-toggle="tab" title="Step 4" aria-expanded="true"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 4
+									</a>
+									</li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content clear-style">
+									<div class="tab-pane active" id="pill-pr-1">
+										<h3>Step 1</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eaque
+										nihil obcaecati minus perferendis officiis cumque nesciunt quae dolorem
+										ad tenetur voluptate blanditiis labore libero id veritatis similique
+										facere, fugiat soluta omnis minima? Iusto optio hic a reiciendis,
+										inventore numquam impedit quaerat deserunt, voluptatum illum in magni,
+										aspernatur corporis mollitia nam? Ipsum, cumque facilis recusandae
+										commodi dolorum sequi quis possimus, aut, ab incidunt dolorem
+										perferendis rerum tenetur. Labore exercitationem magni perspiciatis
+										laborum, aliquam officia molestias obcaecati, voluptatum quidem eum iure
+										aut, officiis dicta cupiditate ab, sit aliquid. Corporis ducimus ab
+										commodi officia? Inventore suscipit saepe dolorem vitae aperiam autem,
+										iusto id, enim assumenda modi a voluptate aliquam molestiae quidem
+										sapiente, obcaecati recusandae. Magni repellat dignissimos sint iste
+										dolorem maxime accusantium quas repellendus quam ipsa, sapiente, beatae
+										enim ab ex. Optio eveniet necessitatibus, tempora dolor eaque saepe,
+										ipsam vero at officiis cumque, maxime consequuntur in ea, voluptate quae
+										nesciunt hic delectus.
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-2">
+										<h3>Step 2</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+									<div class="tab-panel" id="pill-pr-3">
+										<h3>Step 3</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-4">
+										<h3>Step 4</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template id="rlm_tabs_5" inherit_id="website.snippets" name="Tabs (5)">
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/snippet_tabs.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Tabs (5)</span>
+				</div>
+				<section class="oe_snippet_body">
+					<div class="container">
+						<div class="row">
+							<div class="process">
+								<!-- Nav tabs -->
+								<ul class="nav nav-pills white space-top" role="tablist">
+									<li class="active">
+										<a href="#pill-pr-1" role="tab" data-toggle="tab" title="Step 1" aria-expanded="false"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 1
+									</a>
+									</li>
+									<li class="">
+										<a href="#pill-pr-2" role="tab" data-toggle="tab" title="Step 2" aria-expanded="false"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 2
+									</a>
+									</li>
+									<li>
+										<a href="#pill-pr-3" role="tab" data-toggle="tab" title="Step 3" aria-expanded="true"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 3
+									</a>
+									</li>
+									<li>
+										<a href="#pill-pr-4" role="tab" data-toggle="tab" title="Step 4" aria-expanded="true"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 4
+									</a>
+									</li>
+									<li>
+										<a href="#pill-pr-5" role="tab" data-toggle="tab" title="Step 5" aria-expanded="true"><i class="fa fa-dot-circle-o pr-5"/>
+										Step 5
+									</a>
+									</li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content clear-style">
+									<div class="tab-pane active" id="pill-pr-1">
+										<h3>Step 1</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eaque
+										nihil obcaecati minus perferendis officiis cumque nesciunt quae dolorem
+										ad tenetur voluptate blanditiis labore libero id veritatis similique
+										facere, fugiat soluta omnis minima? Iusto optio hic a reiciendis,
+										inventore numquam impedit quaerat deserunt, voluptatum illum in magni,
+										aspernatur corporis mollitia nam? Ipsum, cumque facilis recusandae
+										commodi dolorum sequi quis possimus, aut, ab incidunt dolorem
+										perferendis rerum tenetur. Labore exercitationem magni perspiciatis
+										laborum, aliquam officia molestias obcaecati, voluptatum quidem eum iure
+										aut, officiis dicta cupiditate ab, sit aliquid. Corporis ducimus ab
+										commodi officia? Inventore suscipit saepe dolorem vitae aperiam autem,
+										iusto id, enim assumenda modi a voluptate aliquam molestiae quidem
+										sapiente, obcaecati recusandae. Magni repellat dignissimos sint iste
+										dolorem maxime accusantium quas repellendus quam ipsa, sapiente, beatae
+										enim ab ex. Optio eveniet necessitatibus, tempora dolor eaque saepe,
+										ipsam vero at officiis cumque, maxime consequuntur in ea, voluptate quae
+										nesciunt hic delectus.
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-2">
+										<h3>Step 2</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-3">
+										<h3>Step 3</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-4">
+										<h3>Step 4</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+									<div class="tab-pane" id="pill-pr-5">
+										<h3>Step 5</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, labore
+										iste! Pariatur tempore, dicta voluptatibus quis blanditiis voluptates
+										in. Molestiae asperiores sed, pariatur nesciunt saepe. Culpa ipsam ut
+										enim reiciendis!
+									</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template name="Tabs" id="s_tabs">
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/snippet_tabs.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Tabs Common</span>
+				</div>
+				<section class="s_tabs">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 mt32 mb32 tabs_container panel-alpha">
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="active">
+										<a href="#myTab1" role="tab" data-toggle="tab">
+											<i class="fa fa fa-question-circle fa-1x"/>
+											<strong>Tabs</strong>
+										</a>
+									</li>
+									<li>
+										<a href="#myTab2" role="tab" data-toggle="tab">
+											<i class="fa fa-align-justify fa-1x"/>
+											<strong>Content</strong>
+										</a>
+									</li>
+									<li>
+										<a href="#myTab3" role="tab" data-toggle="tab">
+											<i class="fa fa-cog fa-1x"/>
+											<strong>Options</strong>
+										</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div id="myTab1" class="tab-pane fade in active">
+										<h3 class="mt0">What's a tab?</h3>
+										<p>
+											<strong>- This is the first panel of the basic tab example.</strong>
+										</p>
+										<p>Tab is a graphical element that allows multiple panels to be contained within a single container, <br/>using tabs as a navigational widget for switching between sets of contents.</p>
+									</div>
+									<div id="myTab2" class="tab-pane fade">
+										<img class="img img-responsive pull-left" src="/rlm_x1/static/src/img/ui/snippet_tabs.jpg" alt=""/>
+										<h3 class="mt0">A sample title</h3>
+										<p>To fit your purpose, you can add every classical content elements to a panel: texts, images, links...</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.</p>
+										<p>
+											<a href="#" class="btn btn-default">A sample link</a>
+										</p>
+									</div>
+									<div id="myTab3" class="tab-pane fade">
+										<h3 class="mt0">Options</h3>
+										<p>The customize button allows you to:</p>
+										<ul>
+											<li>Change the color of the container</li>
+											<li>Add a tab (created after the active one)</li>
+											<li>Remove a tab (the active one).</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template id="s_options_tabs" inherit_id="website.snippet_options">
+		<xpath expr="." position="inside">
+			<div data-js="tabs" data-selector=".s_tabs .tabs_container">
+				<li data-add_tab="">
+					<a>Add a tab</a>
+				</li>
+				<li data-remove_tab="">
+					<a>Remove a tab</a>
+				</li>
+			</div>
+		</xpath>
+	</template>
+	<template id="rlm_cat_menu" inherit_id="website.snippets" name="Category Menu">
+		<xpath expr="//div[@id='snippet_content']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/cat_menu.jpg"/>
+					<span class="oe_snippet_thumbnail_title">Category Menu</span>
+				</div>
+				<section class="oe_snippet_body">
+					<h2>Menu</h2>
+					<ul>
+						<li>Item 1</li>
+						<li>Item 2</li>
+						<li>Item 3</li>
+					</ul>
+					<p>
+						<br/>
+					</p>
+				</section>
+			</div>
+		</xpath>
+	</template>
+	<template id="rlm_text_video" inherit_id="website.snippets" name="Text-Video">
+		<xpath expr="//div[@id='snippet_content']/div[hasclass('o_panel_body')]" position="inside">
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/rlm_x1/static/src/img/ui/block_text_video.png"/>
+					<span class="oe_snippet_thumbnail_title">Text-Video</span>
+				</div>
+				 <section class="oe_snippet_body s_text_video mb0">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mt0 col-md-12 mb0">
+                                <h1>Category Name</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mt0 col-md-5 mb0">
+                                <p>Write one or two paragraphs describing your product. To be successful your content needs to be useful to start with the customer – find out what they want and give it to them.</p>
+                                <p>Write one or two paragraphs describing your product. To be successful your content needs to be useful to start with the customer – find out what they want and give it to them.</p>
+                                <p>Write one or two paragraphs describing your product. To be successful your content needs to be useful to start with the customer – find out what they want and give it to them.</p>
+                            </div>
+                            <div class="col-md-7">
+                                <img style="max-width:90%;" src="/rlm_x1/static/src/img/video-image.jpg" alt="video image"/>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                </section>
+			</div>
+		</xpath>
+	</template>
+</odoo>

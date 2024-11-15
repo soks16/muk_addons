@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--       <record model="account.tax" id="tva_ac20">
+        <field name="name">TVA 20% ACHATS</field>
+        <field name="description">TVA 20% ACHATS</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="refund_account_id" ref="pcg_3455220"/>
+        <field name="account_id" ref="pcg_3455220"/>
+        <field name="amount">20</field>
+        <field name="amount_type">percent</field>
+        <field name="tag_ids" eval="[(6,0,[ref('tax_tag_06')])]"/>
+        <field name="tax_group_id" ref="tax_group_tva_20"/>
+      </record>
+
+      <record model="account.tax" id="tva_vt20">
+        <field name="name">TVA 20% VENTES</field>
+        <field name="description">TVA 20% VENTES</field>
+        <field name="type_tax_use">sale</field>
+        <field name="refund_account_id" ref="pcg_445520"/>
+        <field name="account_id" ref="pcg_445520"/>
+        <field name="amount">20</field>
+        <field name="amount_type">percent</field>
+        <field name="tag_ids" eval="[(6,0,[ref('tax_tag_01')])]"/>
+        <field name="tax_group_id" ref="tax_group_tva_20"/>
+      </record> -->
+
+        <record id="gasoil_produit" model="product.product">
+            <field name="name">Gasoil</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="standard_price">9</field>
+            <field name="list_price">10</field>
+            <field name="type">product</field>
+            <field name="uom_id" ref="product.product_uom_litre"/>
+            <field name="uom_po_id" ref="product.product_uom_litre"/>
+            <field name="default_code">Diesel</field>
+           <!--  <field name="taxes_id" eval="[(6,0,[ref('product.product_attribute_value_1'), ref('product.product_attribute_value_3')])]"/> -->
+        </record>
+
+      <record id="fleet.type_service_31" model="fleet.service.type">
+          <field name="name">Oil Change</field>
+          <field name="category">service</field>
+          <field name="validate_suivi">True</field>
+      </record>
+
+    </data>
+</odoo>

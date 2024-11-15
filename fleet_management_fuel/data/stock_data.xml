@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_location_cons_wh" model="stock.location">
+            <field name="name">Consommation</field>
+            <field name="location_id" ref="stock.stock_location_locations"/>
+            <field name="usage">customer</field>
+            <field name="company_id"></field>
+        </record>
+
+    </data>
+</odoo>

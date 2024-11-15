@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="refund_wizard_form_view" model="ir.ui.view">
+            <field name="name">Warning</field>
+            <field name="model">purchase.order.refund</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+               <form>
+                        <P>Do you want to return product?</P>
+                    <group>
+                        <field name="product_return_lines" nolabel="1">
+                            <tree editable="top" create="0">
+                                <field name="product_id"  options="{'no_create': True, 'no_open': True}" force_save="1"/>
+                                <field name="quantity"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="purchase_refund" string="Yes" type="object" class="oe_highlight"/>
+                        or
+                        <button name="purchase_refund_no" string="No" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+</odoo>
